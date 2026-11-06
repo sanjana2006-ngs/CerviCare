@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="View actual evaluation results for the CerviCare Random Forest model.">
+  <title>Model performance | CerviCare</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href="/static/css/dashboard.css">
+  <script src="/static/js/main.js" defer></script>
+  <script src="/static/js/dashboard.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="/" aria-label="CerviCare home"><span class="brand-mark">C</span><span>CERVICARE</span></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+      <a href="/">Home</a><a href="/about">About Project</a><a href="/questionnaire">Screening</a><a href="/analysis">Model Analysis</a><a class="active" href="/dashboard" aria-current="page">Dashboard</a>
+      <a class="nav-cta" href="/questionnaire">Start Screening <span aria-hidden="true">→</span></a>
+    </nav>
+  </header>
+
+  <main class="data-page page-shell">
+    <div class="data-heading dashboard-heading">
+      <p class="eyebrow">TRANSPARENT MODEL REPORT</p>
+      <h1>Model<br><span>performance.</span></h1>
+      <p>Actual results from a stratified, profile-grouped held-out test set. Metrics describe this dataset, not clinical performance.</p>
+    </div>
+    <div id="metrics-error" class="form-error" role="alert" hidden></div>
+    <section class="metrics-grid" aria-label="Dataset summary and held-out test metrics">
+      <article class="metric-card"><span>DATASET RECORDS</span><strong data-summary="records">--</strong><p>Rows in the source dataset</p></article>
+      <article class="metric-card"><span>ORIGINAL FEATURES</span><strong data-summary="original_features">--</strong><p>Columns in the original dataset</p></article>
+      <article class="metric-card"><span>POSITIVE BIOPSY</span><strong data-summary="positive">--</strong><p>Records labelled positive</p></article>
+      <article class="metric-card"><span>NEGATIVE BIOPSY</span><strong data-summary="negative">--</strong><p>Records labelled negative</p></article>
+      <article class="metric-card"><span>ACCURACY</span><strong data-metric="accuracy">--</strong><p>Overall correct classifications</p></article>
+      <article class="metric-card metric-highlight"><span>PRECISION</span><strong data-metric="precision">--</strong><p>Positive predictions that were positive</p></article>
+      <article class="metric-card"><span>RECALL</span><strong data-metric="recall">--</strong><p>Positive cases identified by the model</p></article>
+      <article class="metric-card"><span>F1 SCORE</span><strong data-metric="f1_score">--</strong><p>Balance of precision and recall</p></article>
+    </section>
+    <section class="metadata-strip" id="model-metadata" aria-live="polite">
+      <span>MODEL <strong>Random Forest Classifier</strong></span>
+      <span>DATASET <strong>UCI Cervical Cancer Risk Factors</strong></span>
+      <span>MODEL INPUTS <strong>Age · Smokes · STDs</strong></span>
+    </section>
+    <div class="chart-grid">
+      <figure class="chart-card chart-figure">
+        <figcaption><p class="card-kicker">HELD-OUT TEST DATA</p><h2>Confusion matrix</h2><p>Rows are actual labels; columns are model predictions.</p></figcaption>
+        <img src="/charts/confusion_matrix.png" alt="Confusion matrix showing the Random Forest's actual and predicted biopsy outcome counts">
+      </figure>
+      <figure class="chart-card chart-figure">
+        <figcaption><p class="card-kicker">FULL DATASET</p><h2>Outcome distribution</h2><p>Recorded Biopsy labels in the source dataset.</p></figcaption>
+        <img src="/charts/class_distribution.png" alt="Bar chart showing the dataset's negative and positive biopsy outcome counts">
+      </figure>
+      <figure class="chart-card chart-figure chart-wide">
+        <figcaption><p class="card-kicker">COMPARATIVE BASELINES</p><h2>Model comparison</h2><p>Three simple models evaluated on the same held-out test split.</p></figcaption>
+        <img src="/charts/model_comparison.png" alt="Bar chart comparing held-out accuracy, precision, recall and F1 scores for Logistic Regression, Decision Tree and Random Forest">
+        <div id="comparison-table" class="comparison-table" aria-live="polite"></div>
+      </figure>
+      <figure class="chart-card chart-figure">
+        <figcaption><p class="card-kicker">HELD-OUT TEST DATA</p><h2>ROC curve</h2><p>Discrimination across classification thresholds; interpret cautiously with few positive cases.</p></figcaption>
+        <img src="/charts/roc_curve.png" alt="Receiver operating characteristic curve for the Random Forest on held-out data">
+        <p id="roc-auc" class="chart-disclaimer">ROC-AUC: loading actual model metric...</p>
+      </figure>
+      <figure class="chart-card chart-figure">
+        <figcaption><p class="card-kicker">HELD-OUT TEST DATA</p><h2>Precision-recall curve</h2><p>Useful context when positive labels are uncommon; the dashed baseline is class prevalence.</p></figcaption>
+        <img src="/charts/precision_recall_curve.png" alt="Precision-recall curve for the Random Forest on held-out data">
+        <p id="average-precision" class="chart-disclaimer">Average precision: loading actual model metric...</p>
+      </figure>
+      <figure class="chart-card chart-figure chart-wide">
+        <figcaption><p class="card-kicker">MODEL EXPLAINABILITY</p><h2>Feature importance</h2><p>Random Forest impurity-based importance for the selected questionnaire inputs.</p></figcaption>
+        <img src="/charts/feature_importance.png" alt="Horizontal bar chart of the Random Forest feature importance values">
+        <p class="chart-disclaimer">Importance describes model behavior, not medical causation.</p>
+      </figure>
+    </div>
+    <section class="validation-panel">
+      <div><p class="card-kicker">TRAINING-ONLY VALIDATION</p><h2>Stratified 5-fold cross-validation</h2><p>F1 mean and standard deviation calculated within the training partition.</p></div>
+      <div class="cv-result"><strong id="cv-mean">--</strong><span>mean F1</span><small>± <span id="cv-std">--</span> standard deviation</small></div>
+    </section>
+    <section id="limitations-panel" class="limitations-panel">
+      <div><p class="eyebrow">IMPORTANT CONTEXT</p><h2>A small dataset calls for humility.</h2></div>
+      <ul id="limitations-list"><li>Loading dataset-specific limitations...</li></ul>
+    </section>
+    <p class="dashboard-disclaimer">Predictions are experimental outputs from historical data. They cannot diagnose cervical cancer: a negative prediction does not rule out disease and a positive prediction does not confirm it. Consult a healthcare professional and follow recommended screening; this tool does not replace medical care.</p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="page-shell footer-inner">
+      <a class="brand footer-brand" href="/"><span class="brand-mark">C</span><span>CERVICARE</span></a>
+      <p>Metrics are calculated from the real UCI dataset.</p>
+      <a href="/about">Project details <span aria-hidden="true">→</span></a>
+    </div>
+  </footer>
+</body>
+</html>

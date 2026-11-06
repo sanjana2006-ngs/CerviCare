@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="View the CerviCare screening-support classification and its limitations.">
+  <title>Assessment result | CerviCare</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href="/static/css/result.css">
+  <script src="/static/js/main.js" defer></script>
+  <script src="/static/js/result.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="/" aria-label="CerviCare home"><span class="brand-mark">C</span><span>CERVICARE</span></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+      <a href="/">Home</a><a href="/about">About Project</a><a href="/questionnaire">Screening</a><a href="/analysis">Model Analysis</a><a href="/dashboard">Dashboard</a>
+      <a class="nav-cta" href="/questionnaire">Start Screening <span aria-hidden="true">→</span></a>
+    </nav>
+  </header>
+
+  <main class="result-page page-shell">
+    <a class="back-link" href="/questionnaire">← Start a new assessment</a>
+    <div class="result-heading">
+      <p class="eyebrow"><span class="status-dot"></span> ASSESSMENT COMPLETE</p>
+      <h1>A model output,<br><span>with context.</span></h1>
+      <p>This is an experimental classification from an academic prototype. It is not a diagnosis or a personal cancer-risk estimate.</p>
+    </div>
+    <section id="result-card" class="result-card" aria-live="polite">
+      <div class="result-symbol" aria-hidden="true"><span></span></div>
+      <div class="result-copy">
+        <p class="card-kicker">SCREENING CLASSIFICATION</p>
+        <h2 id="classification">Loading result...</h2>
+        <p id="result-guidance">Please wait while the result is displayed.</p>
+      </div>
+    </section>
+    <aside class="result-input-note">
+      <strong>What the model uses</strong>
+      <p>Only age, smoking status, and STI history are model inputs. Unknown smoking or STI-history responses are passed as missing values to the saved preprocessing pipeline.</p>
+      <ul id="result-inputs" class="result-inputs"></ul>
+    </aside>
+    <p class="probability-caveat">No calibrated probability or personal cancer-risk percentage is provided.</p>
+
+    <section id="print-report" class="print-report" aria-label="Printable assessment report">
+      <p class="eyebrow">CERVICARE · ACADEMIC PROTOTYPE</p>
+      <h2>CerviCare Screening-Support Report</h2>
+      <p>Report date: <time id="report-date"></time></p>
+      <p>Prediction: <strong id="report-classification">Loading result...</strong></p>
+      <h3>Model inputs</h3>
+      <ul id="report-inputs"></ul>
+      <h3>Limitations</h3>
+      <p>This experimental model was trained on a small historical dataset. Its prediction is not clinically validated; a negative prediction does not rule out disease and a positive prediction does not confirm disease.</p>
+      <h3>Medical disclaimer</h3>
+      <p>CerviCare cannot diagnose cervical cancer and does not replace recommended screening or advice from a qualified healthcare professional.</p>
+    </section>
+
+    <div class="report-actions" aria-label="Result actions">
+      <button id="print-report-button" class="button button-secondary" type="button">Print report</button>
+      <a class="button button-primary" href="/questionnaire">Start new screening</a>
+      <a class="button button-secondary" href="/">Return home</a>
+    </div>
+
+    <section class="result-next">
+      <div>
+        <p class="eyebrow">WHAT YOU CAN EXPLORE NEXT</p>
+        <h2>See how the model works.</h2>
+      </div>
+      <div class="result-actions">
+        <a class="button button-primary" href="/analysis">Explore feature analysis <span aria-hidden="true">→</span></a>
+        <a class="button button-secondary" href="/dashboard">View model performance</a>
+      </div>
+    </section>
+
+    <aside class="disclaimer result-disclaimer">
+      <span class="disclaimer-mark" aria-hidden="true">!</span>
+      <div>
+        <h2>Medical disclaimer</h2>
+        <p>Predictions are experimental model outputs from a historical dataset. CerviCare cannot diagnose cervical cancer: a negative prediction does not rule out disease, and a positive prediction does not confirm it. A healthcare professional should interpret screening concerns. This application does not replace recommended medical screening.</p>
+      </div>
+    </aside>
+    <p id="result-error" class="form-error" role="alert" hidden></p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="page-shell footer-inner">
+      <a class="brand footer-brand" href="/"><span class="brand-mark">C</span><span>CERVICARE</span></a>
+      <p>No personal identity details are collected.</p>
+      <a href="/about">Project details <span aria-hidden="true">→</span></a>
+    </div>
+  </footer>
+</body>
+</html>

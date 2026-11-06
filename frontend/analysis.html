@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Explore feature importance rankings from the trained CerviCare Random Forest model.">
+  <title>Feature intelligence | CerviCare</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href="/static/css/dashboard.css">
+  <script src="/static/js/main.js" defer></script>
+  <script src="/static/js/dashboard.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="/" aria-label="CerviCare home"><span class="brand-mark">C</span><span>CERVICARE</span></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+      <a href="/">Home</a><a href="/about">About Project</a><a href="/questionnaire">Screening</a><a class="active" href="/analysis" aria-current="page">Model Analysis</a><a href="/dashboard">Dashboard</a>
+      <a class="nav-cta" href="/questionnaire">Start Screening <span aria-hidden="true">→</span></a>
+    </nav>
+  </header>
+
+  <main class="data-page page-shell">
+    <div class="data-heading">
+      <p class="eyebrow">MODEL EXPLAINABILITY</p>
+      <h1>Feature<br><span>intelligence.</span></h1>
+      <p>These rankings are calculated from the Random Forest fitted on the training partition.</p>
+    </div>
+    <section class="chart-card feature-ranking-card">
+      <div class="chart-heading">
+        <div><p class="card-kicker">RANDOM FOREST · QUESTIONNAIRE INPUTS</p><h2>Model feature importance</h2></div>
+        <span class="chart-tag">Calculated from trained model</span>
+      </div>
+      <div id="feature-list" class="feature-list" aria-live="polite">
+        <p class="loading-inline">Loading calculated feature rankings...</p>
+      </div>
+    </section>
+    <aside class="interpretation-note">
+      <span class="note-icon" aria-hidden="true">i</span>
+      <div>
+        <h2>How to interpret this</h2>
+        <p>Feature importance represents the usefulness of input variables within the trained model. It should not be interpreted as medical causation, clinical significance, or evidence that changing a feature changes an outcome.</p>
+      </div>
+    </aside>
+    <section class="data-callout">
+      <div><p class="eyebrow">LOOK BEYOND A SINGLE SCORE</p><h2>Model performance matters too.</h2><p>Review the held-out metrics, confusion matrix, and limitations of this small historical dataset.</p></div>
+      <a class="button button-primary" href="/dashboard">View model performance <span aria-hidden="true">→</span></a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="page-shell footer-inner">
+      <a class="brand footer-brand" href="/"><span class="brand-mark">C</span><span>CERVICARE</span></a>
+      <p>Feature importance is not medical causation.</p>
+      <a href="/about">Project details <span aria-hidden="true">→</span></a>
+    </div>
+  </footer>
+</body>
+</html>

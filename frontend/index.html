@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="CerviCare is an academic prototype for cervical screening-support risk classification.">
+  <title>CerviCare | Smart Screening Support</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+  <script src="/static/js/main.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="/" aria-label="CerviCare home"><span class="brand-mark">C</span><span>CERVICARE</span></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+      <a class="active" href="/" aria-current="page">Home</a>
+      <a href="/about">About Project</a>
+      <a href="/questionnaire">Screening</a>
+      <a href="/analysis">Model Analysis</a>
+      <a href="/dashboard">Dashboard</a>
+      <a class="nav-cta" href="/questionnaire">Start Screening <span aria-hidden="true">→</span></a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero page-shell">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="status-dot"></span> A STUDENT RESEARCH PROTOTYPE</p>
+        <h1>Smarter Screening.<br><span>Better Awareness. Informed Healthcare.</span></h1>
+        <p class="hero-lede">CerviCare is a machine learning-based screening support prototype that explores clinical questionnaire data using a Random Forest classifier.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="/questionnaire">Start Screening <span aria-hidden="true">→</span></a>
+          <a class="button button-secondary" href="/about">Explore Project</a>
+        </div>
+        <p class="hero-note"><span aria-hidden="true">i</span> Educational prototype only. Not a medical assessment.</p>
+      </div>
+      <div class="hero-art" aria-label="Illustration of a screening-support workflow">
+        <div class="art-orbit orbit-one"></div>
+        <div class="art-orbit orbit-two"></div>
+        <div class="art-center"><span class="art-cross">+</span><span>CARE<br>WITH CONTEXT</span></div>
+        <div class="art-card art-card-top"><span class="art-icon">01</span><span><strong>Risk factors</strong><small>Structured inputs</small></span><span class="art-check">✓</span></div>
+        <div class="art-card art-card-bottom"><span class="art-icon art-icon-soft">02</span><span><strong>Model insight</strong><small>Explainable ranking</small></span><span class="art-line"></span></div>
+        <div class="art-caption"><span class="caption-dot"></span> SCREENING SUPPORT, NOT DIAGNOSIS</div>
+      </div>
+    </section>
+
+    <section class="trust-strip page-shell" aria-label="Project summary">
+      <div><span class="strip-icon">01</span><span><strong>Real research data</strong><small>UCI repository source</small></span></div>
+      <div><span class="strip-icon">02</span><span><strong>Transparent methods</strong><small>Preprocessing and evaluation</small></span></div>
+      <div><span class="strip-icon">03</span><span><strong>Privacy mindful</strong><small>No identity details collected</small></span></div>
+    </section>
+
+    <section class="section page-shell">
+      <div class="section-heading">
+        <p class="eyebrow">THE CERVICARE APPROACH</p>
+        <h2>Machine learning, made more understandable.</h2>
+        <p>A compact academic prototype that brings data, model output, and context into one considered experience.</p>
+      </div>
+      <div class="feature-grid">
+        <article class="feature-card">
+          <span class="feature-icon icon-rose">↗</span>
+          <p class="card-kicker">01 / CLASSIFICATION</p>
+          <h3>Machine learning</h3>
+          <p>A Random Forest model classifies patterns from selected risk-factor fields in the historical dataset.</p>
+          <a href="/questionnaire">Explore screening <span aria-hidden="true">→</span></a>
+        </article>
+        <article class="feature-card">
+          <span class="feature-icon icon-plum">≋</span>
+          <p class="card-kicker">02 / EXPLAINABILITY</p>
+          <h3>Feature ranking</h3>
+          <p>Review which input features were most useful to this trained model, without treating importance as causation.</p>
+          <a href="/analysis">View feature analysis <span aria-hidden="true">→</span></a>
+        </article>
+        <article class="feature-card">
+          <span class="feature-icon icon-sage">+</span>
+          <p class="card-kicker">03 / CONTEXT</p>
+          <h3>Screening support</h3>
+          <p>Results are presented as educational classifications, alongside clear limitations and a medical disclaimer.</p>
+          <a href="/about">Read about the project <span aria-hidden="true">→</span></a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section page-shell home-details">
+      <div class="section-heading">
+        <p class="eyebrow">A TRANSPARENT WORKFLOW</p>
+        <h2>How the system works.</h2>
+        <p>Each step uses the existing fitted model pipeline and keeps the model's scope visible.</p>
+      </div>
+      <ol class="workflow-grid">
+        <li><span>01</span><h3>Questionnaire</h3><p>Enter only age, smoking status, and STI history. No identity or contact details.</p></li>
+        <li><span>02</span><h3>Preprocessing</h3><p>The saved training pipeline handles missing answers consistently with model training.</p></li>
+        <li><span>03</span><h3>Random Forest</h3><p>The trained classifier predicts a historical biopsy-label class from those three inputs.</p></li>
+        <li><span>04</span><h3>Contextual result</h3><p>See the model class with limitations; it is not a diagnosis or personal risk estimate.</p></li>
+      </ol>
+    </section>
+
+    <section class="awareness-band">
+      <div class="page-shell awareness-inner">
+        <div>
+          <p class="eyebrow">WHY SCREENING AWARENESS MATTERS</p>
+          <h2>Use information to support—not replace—care.</h2>
+        </div>
+        <p>Recommended screening and follow-up are guided by healthcare professionals. CerviCare is an academic demonstration of a data workflow, not a screening recommendation or a substitute for clinical care.</p>
+      </div>
+    </section>
+
+    <section class="section page-shell technology-section">
+      <div class="section-heading">
+        <p class="eyebrow">METHOD & TECHNOLOGY</p>
+        <h2>Built for transparent exploration.</h2>
+        <p>Age, smoking status, and aggregate STI history are the only model inputs. Biopsy is the target label; other outcomes and diagnosis indicators are excluded to reduce leakage.</p>
+      </div>
+      <div class="technology-list"><span>Python</span><span>Flask</span><span>Scikit-learn</span><span>Pandas</span><span>NumPy</span><span>HTML · CSS · JavaScript</span></div>
+      <div class="home-detail-links"><a href="/analysis">Explore model feature ranking →</a><a href="/dashboard">Review actual evaluation →</a><a href="/about">Read project methodology →</a></div>
+    </section>
+
+    <section class="dataset-band">
+      <div class="page-shell dataset-band-inner">
+        <div>
+          <p class="eyebrow">BUILT ON A PUBLIC DATASET</p>
+          <h2>Real observations. Honest limitations.</h2>
+          <p>Trained using the UCI Cervical Cancer (Risk Factors) dataset. The original data contains missing values and relatively few positive biopsy outcomes.</p>
+        </div>
+        <a class="button button-light" href="/dashboard">See model performance <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    <section class="disclaimer page-shell">
+      <span class="disclaimer-mark" aria-hidden="true">!</span>
+      <div>
+        <h2>Medical disclaimer</h2>
+        <p>Predictions are experimental model outputs from a historical dataset. CerviCare cannot diagnose cervical cancer: a negative prediction does not rule out disease, and a positive prediction does not confirm it. A healthcare professional should interpret screening concerns. This application does not replace recommended medical screening.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="page-shell footer-inner">
+      <a class="brand footer-brand" href="/"><span class="brand-mark">C</span><span>CERVICARE</span></a>
+      <p>Academic prototype · UCI Cervical Cancer Risk Factors</p>
+      <a href="/about">Project details <span aria-hidden="true">→</span></a>
+    </div>
+  </footer>
+</body>
+</html>

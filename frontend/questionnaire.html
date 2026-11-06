@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Complete the CerviCare educational screening-support questionnaire.">
+  <title>Questionnaire | CerviCare</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href="/static/css/questionnaire.css">
+  <script src="/static/js/main.js" defer></script>
+  <script src="/static/js/questionnaire.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="/" aria-label="CerviCare home"><span class="brand-mark">C</span><span>CERVICARE</span></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+      <a href="/">Home</a><a href="/about">About Project</a><a class="active" href="/questionnaire" aria-current="page">Screening</a><a href="/analysis">Model Analysis</a><a href="/dashboard">Dashboard</a>
+      <a class="nav-cta active" href="/questionnaire" aria-current="page">Start Screening <span aria-hidden="true">→</span></a>
+    </nav>
+  </header>
+
+  <main class="questionnaire-page page-shell">
+    <div class="question-intro">
+      <p class="eyebrow">PRIVATE BY DESIGN · NO IDENTITY DETAILS</p>
+      <h1>A few questions,<br><span>one step at a time.</span></h1>
+      <p>Only age, smoking status, and STI history are used as model inputs. Don't know answers are handled as missing values by the saved preprocessing pipeline. Values stay temporarily in this browser tab to show the result and report; the server does not store them, and closing the tab clears them.</p>
+    </div>
+
+    <section class="question-card" aria-labelledby="step-title">
+      <div id="step-title" class="progress-head">
+        <span id="step-count">STEP 1 OF 5</span>
+        <span id="step-name">Basic information</span>
+      </div>
+      <div class="progress-track" role="progressbar" aria-label="Questionnaire progress" aria-valuemin="1" aria-valuemax="3" aria-valuenow="1">
+        <span id="progress-fill"></span>
+      </div>
+      <form id="questionnaire-form" novalidate>
+        <div id="question-fields" aria-live="polite"></div>
+        <div id="question-error" class="form-error" role="alert" hidden></div>
+        <div class="question-actions">
+          <button id="previous-step" class="button button-secondary" type="button" disabled>← Previous</button>
+          <button id="next-step" class="button button-primary" type="button">Continue <span aria-hidden="true">→</span></button>
+          <button id="submit-assessment" class="button button-primary" type="submit" hidden>Complete assessment <span aria-hidden="true">→</span></button>
+        </div>
+      </form>
+    </section>
+
+    <div id="loading-state" class="loading-card" role="status" aria-live="polite" hidden>
+      <span class="loading-spinner" aria-hidden="true"></span>
+      <div><strong>Analyzing your responses...</strong><p>The saved model is preparing your screening-support classification.</p></div>
+    </div>
+    <p class="privacy-note"><span aria-hidden="true">i</span> No name or contact details are requested. Unknown smoking or STI-history responses remain unknown and are handled by the model's fitted imputer.</p>
+    <p class="medical-note">This is an educational prototype and not a substitute for professional screening or clinical advice.</p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="page-shell footer-inner">
+      <a class="brand footer-brand" href="/"><span class="brand-mark">C</span><span>CERVICARE</span></a>
+      <p>Responses are not stored by this application.</p>
+      <a href="/about">Medical disclaimer <span aria-hidden="true">→</span></a>
+    </div>
+  </footer>
+</body>
+</html>

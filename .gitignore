@@ -1,0 +1,16 @@
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.DS_Store
+Thumbs.db
+
+# Generated training artifacts
+model/*.pkl
+model/feature_importance.json
+model/metadata.json
+reports/*.json
+charts/*.png
+
+# Keep the UCI dataset out of version control
+dataset/*.csv
